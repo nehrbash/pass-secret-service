@@ -21,7 +21,7 @@ use crate::{
     error::{Error, OptionNoneNotFound, Result},
     pass::PasswordStore,
     secret_store::{
-        get_collection_dir, redb::RedbSecretStore, slugify, SecretStore, NANOID_ALPHABET,
+        get_collection_dir, gpg_store::GpgSecretStore, slugify, SecretStore, NANOID_ALPHABET,
     },
 };
 
@@ -53,7 +53,7 @@ impl Service<'static> {
         forget_password_on_lock: bool,
         notify_on_access: bool,
     ) -> Result<Self> {
-        let store = Box::new(RedbSecretStore::new(pass).await?);
+        let store = Box::new(GpgSecretStore::new(pass).await?);
 
         {
             let object_server = connection.object_server();

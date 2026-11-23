@@ -11,9 +11,7 @@ use dyn_clone::DynClone;
 
 use crate::{error::Result, pass::PasswordStore};
 
-pub mod redb;
-mod redb_imps;
-//mod json;
+pub mod gpg_store;
 
 pub const PASS_SUBDIR: &'static str = "secret-service";
 

@@ -4,7 +4,7 @@
 
 Implementation of [`org.freedesktop.secrets`](https://specifications.freedesktop.org/secret-service-spec/latest/) using [`pass`](https://www.passwordstore.org/)
 
-Secrets are stored in GPG files under `~/.password-store/secret-service`. Attributes are not encrypted.
+Secrets are stored in GPG files under `~/.password-store/secret-service/<collection>/<id>.gpg`, with opaque ids. Each secret's label and attributes are kept in a GPG-encrypted `.meta/<id>.gpg` beside it, so `pass show` still works and nothing sensitive is stored in plaintext. Only collection labels (`.label`) and alias-to-collection mappings (`.aliases/`) are plaintext.
 
 ## Installation
 
